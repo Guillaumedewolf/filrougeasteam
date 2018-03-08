@@ -20,7 +20,7 @@ class BlogManager extends Manager{
 
     public function getArticlesByAuthor($author){
         $db = $this->dbConnect();
-        $filteredArticles = $db->prepare('SELECT title, content, author, DATE_FORMAT(date_published, \'%d/%m/%Y à %Hh%imin%ss\') AS date_published FROM blog WHERE author = ? ORDER BY date_published DESC LIMIT 0, 5');
+        $filteredArticles = $db->prepare('SELECT title, content, author, DATE_FORMAT(date_published, \'%d/%m/%Y à %Hh%imin%ss\') AS date_published FROM "blog" WHERE author = ? ORDER BY date_published DESC LIMIT 0, 5');
         $filteredArticles->execute(array($author));
 
         return $filteredArticles;
